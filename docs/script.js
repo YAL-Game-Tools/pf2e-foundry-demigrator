@@ -86,6 +86,7 @@
 		if (!file) return;
 		try {
 			fdInput.value = await file.text();
+			updateVersions();
 			fileName = file.name;
 		} catch (_) {}
 		fmFileInput.reset();
