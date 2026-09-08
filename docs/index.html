@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>YAL's Foundry Demigrator</title>
+	<meta property="og:title" content="YAL's Foundry Demigrator" />
+	<meta property="og:description" content='For the burning Pathfinder 2nd edition questions like "does it make sense to grapple this enemy", "how much does a +1 status bonus help", or "should I attack with MAP?".' />
+	<link rel="stylesheet" href="style.css?v=AUTO_DATE"/>
+	<link rel="stylesheet" href="night.css?v=AUTO_DATE"/>
+	<script defer="" src="https://cloud.umami.is/script.js" data-website-id="5e27083a-c054-4136-9592-b43ac60a5e84"></script>
+</head><body>
+	<main>
+		<input id="night" type="checkbox"/>
+		<label for="night"></label>
+		<h1>YAL's Foundry Demigrator</h1>
+		<script>(function() {
+			var key = "foundry-demigrator-night";
+			var cb = document.getElementById("night");
+			var value = null;
+			try {
+				value = localStorage.getItem(key) == "1";
+			} catch (_) {}
+			if (value == null) {
+				value = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			}
+			function sync() {
+				if (cb.checked) document.body.classList.add("night"); else document.body.classList.remove("night");
+			}
+			cb.checked = value;
+			cb.onchange = function() {
+				sync();
+				try {
+					localStorage.setItem(key, cb.checked ? "1" : "0");
+				} catch (_) {}
+			};
+			sync();
+		})()</script>
+		<p>
+			So you exported your character JSON from Foundry and it doesn't import into another instance because yours is 0.001 versions newer.
+		</p><p>
+			This little tool fixes that by simply changing all the version numbers to not be newer than what you say. For minor version changes, this is just fine.
+		</p>
+		
+		<label for="in">Paste your Foundry character JSON here, or:</label>
+		<form id="in-form" style="margin-bottom: 0.3em;">
+			<input id="in-file" type="file" accept=".json" />
+		</form>
+		<textarea id="in" placeholder='{ "name: "You, of course", ... }' rows="10"></textarea>
+		
+		<label>
+			<b>Foundry Versions:</b> <span id="foundry-versions"></span>
+		</label><label>
+			<b>System Versions</b> <span id="system-versions"></span>
+		</label>
+		
+		<label>
+			<b>New Foundry Version:</b>
+			<input type="text" value="14.363" id="new-foundry-version"/>
+		</label><label>
+			<b>New System Version:</b>
+			<input type="text" value="" id="new-system-version"/>
+		</label><p>
+			<input type="button" value="Convert" id="convert" />
+			<input type="button" value="Download" id="download" />
+		</p>
+		<textarea id="out" rows="10"></textarea>
+		
+		<script src="FileSaver.min.js"></script>
+		<script src="script.js?v=AUTO_DATE"></script>
+	</main>
+</body></html>

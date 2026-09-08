@@ -1,0 +1,168 @@
+body {
+	font: 15px sans-serif;
+	line-height: 1.5;
+	background: #899FC6;
+}
+main {
+	max-width: 720px;
+	margin: 0 auto;
+	background: white;
+	padding: 10px;
+}
+
+main div.table {
+	display: grid;
+	grid-template-columns: 6em 1fr 6em 1fr;
+	grid-auto-flow: row;
+	column-gap: 0.25em;
+	row-gap: 0.25em;
+}
+main textarea {
+	box-sizing: border-box;
+	width: 100%;
+	resize: vertical;
+}
+@media only screen and (min-device-width: 600px) {
+	main div.table {
+		grid-template-columns: 10em 1fr 10em 1fr;
+	}
+}
+@media only screen and (min-device-width: 720px) {
+	main div.table {
+		grid-template-columns: 14em 1fr 14em 1fr;
+	}
+}
+main > label {
+	display: block;
+}
+main .table .checkbox {
+	text-align: right;
+}
+main > h1 {
+	margin: 0;
+	transform: skewX(-5deg);
+}
+main .table input:not([type="checkbox"]),
+main .table select,
+main input.wide {
+	width: 100%;
+	box-sizing: border-box;
+}
+main input.error {
+	outline: 1px solid red;
+}
+main .table > div[title] {
+	cursor: help;
+}
+main .table > div[title]:after {
+	content: "[?]";
+	opacity: 0.3;
+}
+
+main details[open] > *:not(summary) {
+	margin-left: 1em;
+}
+main details > p {
+	margin-top: 0;
+}
+main details > p:last-child {
+	margin-bottom: 0;
+}
+
+fieldset.hide {
+	opacity: 0.7;
+	padding-bottom: 0;
+}
+fieldset legend {
+	cursor: default;
+}
+fieldset:not(.hide) > legend:before {
+	content: "▽ "; /* + */
+}
+fieldset.hide > legend:before {
+	content: "▷ "; /* − */
+}
+fieldset.hide > *:not(legend) {
+	display: none;
+}
+#in-use-efficiency:not(:checked) ~ #in-efficiency {
+	display: none;
+}
+#night:checked + main table input {
+	background: rgb(34, 34, 34);
+	color: white;
+	border: 1px solid rgb(137, 159, 198);
+}
+.results {
+	width: 100%;
+	box-sizing: border-box;
+}
+.results td {
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
+	font-family: monospace, monospace;
+}
+.results td.left,
+.results th.left {
+	text-align: left;
+}
+.results.roll-2d tr.normal {
+	display: none;
+}
+.results:not(.roll-2d) tr.roll-2d {
+	display: none;
+}
+/* These use Bootstrap 4 badge colors*/
+.crit-success {
+	color: white;
+	background-color: #007bff;
+}
+.any-success {
+	color: #212529;
+	background-color: #6ae1ff;
+}
+.success {
+	color: white;
+	background-color: #28a745;
+}
+.failure {
+	color: #212529;
+	background-color: #ffc107;
+}
+.crit-failure {
+	color: white;
+	background-color: #dc3545;
+}
+.flat-failure {
+	color: white;
+	background-color: #6c757d;
+}
+.stages td[title] {
+	text-decoration: underline dotted;
+	cursor: help;
+}
+
+.stages span[class] {
+	padding: 0.1em 0.3em;
+	border-radius: 0.2em;
+	display: inline-block;
+	margin-top: 0.3em;
+}
+main p {
+	margin: 0.25em 0;
+}
+main p:first-child, main legend + p {
+	margin-top: 0.15em;
+}
+main p:last-child {
+	margin-bottom: 0.15em;
+}
+#efficiency-div {
+	margin-top: 0.3em;
+}
+@media only screen and (max-device-width: 480px) {
+	.results td {
+		font-size: 75%;
+	}
+}
