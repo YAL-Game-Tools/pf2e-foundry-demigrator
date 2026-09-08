@@ -91,7 +91,7 @@
 		fmFileInput.reset();
 	}
 	find("download").onclick = () => {
-		let blob = new Blob([fdOutput.text]);
+		let blob = new Blob([fdOutput.value]);
 		window.saveAs(blob, fileName);
 	}
 	
